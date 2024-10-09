@@ -1,13 +1,14 @@
-export function twoSum(nums: number[], target: number): number[] {
-  const numbersObject: { [key: string]: number } = {};
+export function longestCommonPrefix(strs: string[]): string {
+  if (strs.length === 0) return "";
 
-  for (let i = 0; i != nums.length; i++) {
-    if (target - nums[i] in numbersObject) {
-      return [numbersObject[target - nums[i]], i];
+  let prefix = strs[0];
+
+  for (let i = 1; i < strs.length; i++) {
+    while (strs[i].indexOf(prefix) !== 0) {
+      prefix = prefix.slice(0, prefix.length - 1);
+      if (prefix === "") return "";
     }
-
-    numbersObject[nums[i]] = i;
   }
 
-  return [];
+  return prefix;
 }
