@@ -31,19 +31,18 @@ Output: [0,1]
 Solutions:
 
 ```
-function longestCommonPrefix(strs: string[]): string {
-  if (strs.length === 0) return "";
+function twoSum(nums: number[], target: number) {
+  const numbersObject: {[key: number]: number} = {};
 
-  let prefix = strs[0];
-
-  for (let i = 1; i < strs.length; i++) {
-    while (strs[i].indexOf(prefix) !== 0) {
-      prefix = prefix.slice(0, prefix.length - 1);
-      if (prefix === "") return "";
+  for (let i = 0; i != nums.length; i++) {
+    if (target - nums[i] in numbersObject) {
+      return [numbersObject[target - nums[i]], i];
     }
+
+    numbersObject[nums[i]] = i;
   }
 
-  return prefix;
+  return [];
 }
 
 ```
